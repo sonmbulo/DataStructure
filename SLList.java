@@ -78,7 +78,7 @@ public class SLList<T> {
         l1.addFirst(3);
         l1.addLast(4);
 
-        /* Should print "3 2 1" */
+        /* Should print "3214" */
         l1.print();
 
         SLList<String> l2 = new SLList<>("wow! ");
@@ -93,8 +93,8 @@ public class SLList<T> {
         l1.removeFirst();
         l1.removeLast();
 
-        /* Should be 3 */
-        //System.out.println(l1.size);
+        /* Should be 4 */
+        System.out.println(l1.size);
         
     }
 }
