@@ -1,3 +1,4 @@
+/** Simple circular double linked list */
 public class DLList<T> {
     /* Why private? */
     private int size;
@@ -19,18 +20,19 @@ public class DLList<T> {
     public DLList() {
         size = 0;
         
-        Node first = new Node(null, first, first);
-        sentinel = first;
+        sentinel = new Node(null, null, null);
+        sentinel.pre = sentinel;
+        sentinel.next = sentinel;
     }
 
     public DLList(T item) {
         size = 1;
         
-        DLList l = DLList();
+        DLList l = new DLList();
         Node newNode = new Node(item, l.sentinel, l.sentinel);
         l.sentinel.next = newNode;
         l.sentinel.pre = newNode;
-        sentinle = l.sentinel;
+        sentinel = l.sentinel;
     }
 
     public void addFirst(T x) {
@@ -51,6 +53,7 @@ public class DLList<T> {
         return first.item;
     }
 
+    /* T(n) = O(1) */
     public void addLast(T x) {
         Node newNode = new Node(x, sentinel.pre, sentinel);
         sentinel.pre.next = newNode;
@@ -59,6 +62,7 @@ public class DLList<T> {
         size += 1;
     }
 
+    /* T(n) = O(1) */
     public T removeLast() {
         Node last = sentinel.pre;
         last.pre.next = sentinel;
@@ -67,19 +71,23 @@ public class DLList<T> {
         last.next = null;
         
         size -= 1;
+        return last.item;
     }
 
     public int size() {
         return size;
     }
 
+    /* Print the items in the list in order */
     public void print() {
-        Node p = sentinel;
+        Node p = sentinel.next;
 
-        while(p.next != sentinel) {
+        while(p != sentinel) {
             System.out.print(p.item);
             p = p.next;
         }
+
+        System.out.printf("\n");
     }
 
     public static void main(String[] args) {
@@ -102,7 +110,7 @@ public class DLList<T> {
         l2.addLast("bbs");
 
         /* Should be 5 */
-        System.out.print(l2.size());
+        System.out.println(l2.size());
         /* Should be "2049bbs" */
         l2.print();
         /* Should be "92148" */
