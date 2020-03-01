@@ -61,6 +61,7 @@ public class ArraySet<T> implements Iterable<T> {
 
     public static void main(String[] args) {
         ArraySet<Integer> intSet = new ArraySet<>();
+        ArraySet<String> strs = new ArraySet<>();
         intSet.add(1);
         intSet.add(2);
         intSet.add(3);
@@ -69,6 +70,7 @@ public class ArraySet<T> implements Iterable<T> {
         for (int x : intSet) {
             System.out.print(x);
         }
+
     }
 }
 
